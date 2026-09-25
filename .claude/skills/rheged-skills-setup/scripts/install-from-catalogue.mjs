@@ -3,6 +3,7 @@
 import {
   buildSkillsAddArgsForSource,
   DEFAULT_CATALOGUE_URL,
+  LEGACY_BUNDLE_NAMES,
   LEGACY_COMMAND_SHIM_NAMES,
   mattSkillNames,
   parseCatalogue,
@@ -14,7 +15,13 @@ import {
 } from "./lib/catalogue.mjs";
 import { parseClobberedConfigs } from "./lib/git.mjs";
 import { spawnSync } from "node:child_process";
-import { existsSync, readFileSync, rmSync, statSync } from "node:fs";
+import {
+  existsSync,
+  readFileSync,
+  rmSync,
+  statSync,
+  writeFileSync,
+} from "node:fs";
 import { join, resolve } from "node:path";
 
 export const CONSUMER_SKILL_DIRS = [
@@ -129,6 +136,41 @@ function runSkillsAdd(repoRoot, args) {
   run("npx", ["skills", ...args], repoRoot, skillsAddEnvironment());
 }
 
+function pruneRetiredSkillsFromSkillsShLock(repoRoot) {
+  const lockFile = join(repoRoot, "skills-lock.json");
+  if (!existsSync(lockFile)) {
+    return;
+  }
+
+  let lock;
+  try {
+    lock = JSON.parse(readFileSync(lockFile, "utf8"));
+  } catch {
+    return;
+  }
+
+  if (!lock?.skills || typeof lock.skills !== "object") {
+    return;
+  }
+
+  const removedNames = [];
+  for (const name of LEGACY_BUNDLE_NAMES) {
+    if (Object.hasOwn(lock.skills, name)) {
+      delete lock.skills[name];
+      removedNames.push(name);
+    }
+  }
+
+  if (removedNames.length === 0) {
+    return;
+  }
+
+  writeFileSync(lockFile, `${JSON.stringify(lock, null, 2)}\n`);
+  console.log(
+    `rheged-skills-setup: removed retired skill(s) from skills-lock.json: ${removedNames.join(", ")}.`,
+  );
+}
+
 function wipeBeforeInstall(repoRoot, installSkills) {
   const targets = resolveWipeTargetsWithLegacy(
     CONSUMER_SKILL_DIRS,
@@ -160,6 +202,8 @@ function wipeBeforeInstall(repoRoot, installSkills) {
       `rheged-skills-setup: wiped ${removed.length} bundle/shim path(s) before install.`,
     );
   }
+
+  pruneRetiredSkillsFromSkillsShLock(repoRoot);
 }
 
 function relative(repoRoot, absolute) {
