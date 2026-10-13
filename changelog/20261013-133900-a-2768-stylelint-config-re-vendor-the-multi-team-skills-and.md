@@ -3,10 +3,10 @@ title: Re-vendor agent-skills v1.13.0 with R and A issue keys
 release_note: ""
 version:
 created_at: "2026-10-13T13:39:00Z"
-merged_at:
+merged_at: "2026-10-13T13:32:12Z"
 branch: a-2768-stylelint-config-re-vendor-the-multi-team-skills-and
-pr:
-commit:
+pr: 51
+commit: 522ec61
 author: rob@rheged.studio
 co_authors: []
 category: chore
@@ -17,9 +17,9 @@ issues:
 affected_packages:
   - infrastructure
 stats:
-  files_changed:
-  loc_added:
-  loc_removed:
+  files_changed: 82
+  loc_added: 2559
+  loc_removed: 971
 ---
 
 ## Changed
