@@ -1,15 +1,15 @@
 ---
 title: Consume shared load-repo-config reusable
-release_note: CI and pkg-release now float reusable-load-repo-config.yml@v1; the local load-repo-config composite is deleted (A-779).
-created_at: '2026-07-10T17:33:53Z'
+release_note: CI and pkg-release now float reusable-load-repo-config.yml@v1; the local load-repo-config composite is deleted (R-779).
+created_at: "2026-07-10T17:33:53Z"
 branch: a-779-consume-shared-load-repo-config
 author: rob@acmeskunkworks.io
 co_authors: []
 category: chore
 breaking: false
 issues:
-  - A-779
-merged_at: '2026-07-10T17:42:03Z'
+  - R-779
+merged_at: "2026-07-10T17:42:03Z"
 commit: e153f43
 pr: 13
 stats:
@@ -23,5 +23,5 @@ version: 1.0.1
 ## Changed
 
 - Caller `config` jobs call `reusable-load-repo-config.yml@v1` instead of the
-  local composite ([A-779](https://linear.app/rheged-studio/issue/A-779)).
+  local composite ([R-779](https://linear.app/rheged-studio/issue/R-779)).
 - Deleted `.github/actions/load-repo-config/`.

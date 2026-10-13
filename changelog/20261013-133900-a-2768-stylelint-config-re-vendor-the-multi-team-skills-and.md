@@ -12,8 +12,8 @@ co_authors: []
 category: chore
 breaking: false
 issues:
-  - A-2768
-  - A-2742
+  - R-2768
+  - R-2742
 affected_packages:
   - infrastructure
 stats:
@@ -24,11 +24,11 @@ stats:
 
 ## Changed
 
-**Re-vendor the multi-team skills ([A-2768](https://linear.app/rheged-studio/issue/A-2768))**
+**Re-vendor the multi-team skills ([R-2768](https://linear.app/rheged-studio/issue/R-2768))**
 
-- Re-vendor the Rheged and Matt Pocock bundles into `.claude` and `.agents` from agent-skills v1.13.0, restoring each `config.json` after `--copy` ([A-706](https://linear.app/rheged-studio/issue/A-706))
+- Re-vendor the Rheged and Matt Pocock bundles into `.claude` and `.agents` from agent-skills v1.13.0, restoring each `config.json` after `--copy` ([R-706](https://linear.app/rheged-studio/issue/R-706))
 - Bump the `@rheged-studio/changelog-core` devDependency to `^1.2.0`
 
-**Set R and A issue keys ([A-2742](https://linear.app/rheged-studio/issue/A-2742))**
+**Set R and A issue keys ([R-2742](https://linear.app/rheged-studio/issue/R-2742))**
 
 - Set `issueKeys` to `["R", "A"]` in the root `config.json` and the changelog, cleanup-repo, Linear-sync and triage-pr skill configs

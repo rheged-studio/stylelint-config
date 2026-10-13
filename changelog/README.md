@@ -2,7 +2,7 @@
 
 One Markdown file per change, capturing what changed and why. Entries are written by the `/send-it` slash command at PR-creation time and enriched by GitHub Actions after merge.
 
-This is the curated, per-change, machine-readable record — and, since the move to release-please (which runs with `skip-changelog`, A-371), the **only** changelog in the repo: there is no root `CHANGELOG.md`. These entries are also what the release workflow (`pkg-release.yml`, via the shared reusable workflow) sources the GitHub-release notes from. Release-triggering entries are stamped with a `version` at release finalisation, tying them back to the published release they shipped in; non-release entries stay versionless.
+This is the curated, per-change, machine-readable record — and, since the move to release-please (which runs with `skip-changelog`, R-371), the **only** changelog in the repo: there is no root `CHANGELOG.md`. These entries are also what the release workflow (`pkg-release.yml`, via the shared reusable workflow) sources the GitHub-release notes from. Release-triggering entries are stamped with a `version` at release finalisation, tying them back to the published release they shipped in; non-release entries stay versionless.
 
 ## File naming
 
@@ -29,7 +29,7 @@ author: "you@example.com"
 co_authors: []
 category: feature # feature | fix | chore | docs | refactor | perf
 breaking: false
-issues: ["A-123"] # Linear issue IDs
+issues: ["R-123"] # Linear issue IDs
 stats: # filled post-merge
   files_changed: # integer
   loc_added: # integer
@@ -37,7 +37,7 @@ stats: # filled post-merge
 ---
 ```
 
-`merge_strategy` was removed from the contract (A-802).
+`merge_strategy` was removed from the contract (R-802).
 
 ### Differences from octavo's schema
 
@@ -96,10 +96,10 @@ Only include `Added` / `Changed` / `Fixed` headings that have entries.
 
 ## Lifecycle
 
-Two stages — post-merge enrichment runs in-repo via `reusable-changelog-enrich.yml` on every push to `main` (A-799 / A-821):
+Two stages — post-merge enrichment runs in-repo via `reusable-changelog-enrich.yml` on every push to `main` (R-799 / R-821):
 
 1. **Create or update an entry (PR-time):** run `/send-it` from a feature branch. It writes the entry with the PR-time fields (`title`, `release_note`, `created_at`, `branch`, `author`, `co_authors`, `category`, `breaking`, `issues`) and empty placeholders for the rest. The entry merges to `main` with the feature PR and waits.
-2. **Post-merge / release:** `pkg-release.yml`'s `changelog-enrich` job (`mode: finalise`) resolves the just-merged PR, fills `merged_at` / `commit` / `pr` / `stats`, and stamps `version` when the push is a release-please cut. Write-back pushes only `changelog/**` as `road-runner-bot[bot]` (ADR 0004). The orchestrator's inline finalise is retired later (A-801).
+2. **Post-merge / release:** `pkg-release.yml`'s `changelog-enrich` job (`mode: finalise`) resolves the just-merged PR, fills `merged_at` / `commit` / `pr` / `stats`, and stamps `version` when the push is a release-please cut. Write-back pushes only `changelog/**` as `road-runner-bot[bot]` (ADR 0004). The orchestrator's inline finalise is retired later (R-801).
 
 **CI validation:** the `lint` reusable caller in `ci.yml` runs `pnpm validate:changelog` on every PR. Malformed entries fail the check. Run it locally with:
 

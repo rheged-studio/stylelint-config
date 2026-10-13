@@ -3,9 +3,9 @@
 The one-time setup that turns `rheged-studio/npm-package-template` into a working
 GitHub **Template repository**, plus the org/repo settings every spawned repo inherits.
 
-These settings were proven on the `eslint-config` testbed (A-311 / A-312 / A-313 /
-A-314) and reconciled to the current estate (release-please, the `GO/NO GO` aggregator
-check-run, and shared reusable CI callers — A-371 / A-413 / A-424 / A-447 / A-432).
+These settings were proven on the `eslint-config` testbed (R-311 / R-312 / R-313 /
+R-314) and reconciled to the current estate (release-please, the `GO/NO GO` aggregator
+check-run, and shared reusable CI callers — R-371 / R-413 / R-424 / R-447 / R-432).
 
 > **Important:** branch protection, rulesets, and repo/org settings are **not** copied by
 > GitHub's "Use this template". Each spawned repo must re-apply the [repo-level](#repo-level-this-repo-and-each-spawned-repo)
@@ -45,13 +45,13 @@ one stable required gate. Require it on `main` via a ruleset:
 - [ ] PR required before merging.
 - [ ] **0 required approvals.** ⚠️ A non-zero count blocks the orchestrator's own release-PR merge.
 - [ ] Required status check: **`GO/NO GO`** — **not** the retired `🔬 Build & Lint`. The caller
-      swap (A-447) replaced it with `lint / Lint` + `build-test / Build & Test`, and `GO/NO GO`
+      swap (R-447) replaced it with `lint / Lint` + `build-test / Build & Test`, and `GO/NO GO`
       aggregates them all.
 - [ ] Ruleset **pinned to the GitHub Actions integration** (`integration_id: 15368`), so nothing
       but this repo's Actions can satisfy it.
 - [ ] No bot bypass.
 
-Footguns (A-418):
+Footguns (R-418):
 
 - The gate must be a **check-run, not a commit status** — a commit status is forgeable by any
   push-scoped token; a check-run can only be minted by a GitHub App (the repo's own Actions run).
@@ -72,7 +72,7 @@ gh api -X POST repos/<owner>/<repo>/environments/npm-release/deployment-branch-p
 
 - [ ] Deployment-branch policy permits deployments **only from `refs/heads/main`**.
 - [ ] **No required reviewers** — releases stay hands-off; this is a structural ref gate, not a
-      manual approval (A-326).
+      manual approval (R-326).
 
 ## npm OIDC Trusted Publishing
 
@@ -84,7 +84,7 @@ configure Trusted Publisher → CI takes over from publish #2.
 - [ ] Configure the Trusted Publisher at `https://www.npmjs.com/package/<name>/access` →
       GitHub Actions → org, repo, workflow filename `pkg-release.yml`, environment **blank**.
       (npm Trusted Publishing binds its OIDC subject to repository + workflow **filename**, so this
-      must be `pkg-release.yml` — the thin caller migrated from `release.yml` under A-639. Blank
+      must be `pkg-release.yml` — the thin caller migrated from `release.yml` under R-639. Blank
       accepts any environment in `pkg-release.yml`; the form also accepts `npm-release` to narrow the
       OIDC subject claim further. Blank is the verified default — see CLAUDE.md.)
 - [ ] Confirm publish #2 onwards flows through `pkg-release.yml` (OIDC, no token, no OTP) + provenance.
@@ -94,16 +94,16 @@ configure Trusted Publisher → CI takes over from publish #2.
 Releases are driven by the **private** `rheged-studio/release-orchestrator` repo, which holds
 the bot key, runs `release-please release-pr`, and merges the release PR. Post-merge changelog
 enrichment / `version` stamping runs in-repo via `reusable-changelog-enrich.yml` in
-`pkg-release.yml` (A-799); the orchestrator's inline finalise is retired later (A-801).
+`pkg-release.yml` (R-799); the orchestrator's inline finalise is retired later (R-801).
 
 - [ ] Install road-runner-bot (perms in [Org-level](#org-level-rheged-studio)).
 - [ ] Add the repo to the orchestrator's `matrix.repo`.
 - [ ] Confirm the CI callers run on the `release-please--*` branch (they do — no skip), so the
       changelog lane validates the finalised entries before the release PR merges.
 - [ ] The required check the orchestrator waits on is **`GO/NO GO`** (the orchestrator's
-      `🔬 Build & Lint` → `GO/NO GO` cutover completed via A-419 / A-596 / A-437).
+      `🔬 Build & Lint` → `GO/NO GO` cutover completed via R-419 / R-596 / R-437).
 
-> The old A-309 "exclude `CHANGELOG.md` from markdown lint" step no longer applies:
+> The old R-309 "exclude `CHANGELOG.md` from markdown lint" step no longer applies:
 > release-please runs with `skip-changelog`, so there is no root `CHANGELOG.md` — the dated
 > `changelog/` directory is the only changelog.
 

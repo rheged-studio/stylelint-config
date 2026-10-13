@@ -12,7 +12,7 @@ co_authors: []
 category: chore
 breaking: false
 issues:
-  - A-2316
+  - R-2316
 affected_packages:
   - infrastructure
 stats:
@@ -23,9 +23,9 @@ stats:
 
 ## Changed
 
-**Re-vendor shared skills for v1.3.1 ([A-2316](https://linear.app/rheged-studio/issue/A-2316))**
+**Re-vendor shared skills for v1.3.1 ([R-2316](https://linear.app/rheged-studio/issue/R-2316))**
 
 - Roll Rheged and Matt Pocock bundles on `.claude` and `.agents` mirrors via `fleet-update.mjs`
 - Add `implement-spec`, `retro`, and Rheged `pr`; remove upstream-dropped `resolving-merge-conflicts`
-- Restore per-skill `config.json` after `--copy` ([A-706](https://linear.app/rheged-studio/issue/A-706)); keep `triage-pr` on unattended Phase B (`humanEnvelope: false`) and `follow-up` follow-up label
-- Refresh `skills-lock.json` / `.claude/skills.lock` to current GitHub provenance ([A-718](https://linear.app/rheged-studio/issue/A-718))
+- Restore per-skill `config.json` after `--copy` ([R-706](https://linear.app/rheged-studio/issue/R-706)); keep `triage-pr` on unattended Phase B (`humanEnvelope: false`) and `follow-up` follow-up label
+- Refresh `skills-lock.json` / `.claude/skills.lock` to current GitHub provenance ([R-718](https://linear.app/rheged-studio/issue/R-718))
