@@ -3,10 +3,10 @@ title: Sweep Linear issue references to R and C keys
 release_note: ""
 version:
 created_at: "2026-10-13T20:38:24Z"
-merged_at:
+merged_at: "2026-10-14T08:07:12Z"
 branch: r-2743-stylelint-config-sweep-issue-references
-pr:
-commit:
+pr: 53
+commit: a7acfc4
 author: rob@rheged.studio
 co_authors: []
 category: chore
@@ -14,9 +14,9 @@ breaking: false
 issues:
   - R-2743
 stats:
-  files_changed:
-  loc_added:
-  loc_removed:
+  files_changed: 45
+  loc_added: 226
+  loc_removed: 200
 ---
 
 ## Changed
