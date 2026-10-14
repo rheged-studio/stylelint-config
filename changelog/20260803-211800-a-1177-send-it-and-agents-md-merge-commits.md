@@ -1,8 +1,8 @@
 ---
 title: Re-vendor send-it 0.7.0 and refresh AGENTS.md for merge commits
-release_note: ''
-created_at: '2026-08-03T21:18:00Z'
-merged_at: '2026-08-03T21:04:09Z'
+release_note: ""
+created_at: "2026-08-03T21:18:00Z"
+merged_at: "2026-08-03T21:04:09Z"
 branch: a-1177-enable-estate-merge-commits-keep-squash-allowed-for-release
 pr: 22
 commit: aa2f9cb
@@ -11,7 +11,7 @@ co_authors: []
 category: chore
 breaking: false
 issues:
-  - A-1177
+  - R-1177
 stats:
   files_changed: 13
   loc_added: 271
@@ -22,4 +22,4 @@ version: 1.0.1
 
 ## Changed
 
-**Estate merge-commit cutover ([A-1177](https://linear.app/rheged-studio/issue/A-1177))** — re-vendor `send-it` **0.7.0** (feature PRs use `gh pr merge --auto --merge`) and refresh `AGENTS.md` dual-merge policy from `shared-agents-md`. Fan-outs remain paused ([A-809](https://linear.app/rheged-studio/issue/A-809)), so this is a manual one-shot.
+**Estate merge-commit cutover ([R-1177](https://linear.app/rheged-studio/issue/R-1177))** — re-vendor `send-it` **0.7.0** (feature PRs use `gh pr merge --auto --merge`) and refresh `AGENTS.md` dual-merge policy from `shared-agents-md`. Fan-outs remain paused ([R-809](https://linear.app/rheged-studio/issue/R-809)), so this is a manual one-shot.

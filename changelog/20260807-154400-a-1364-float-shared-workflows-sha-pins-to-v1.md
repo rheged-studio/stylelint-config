@@ -11,7 +11,7 @@ co_authors: []
 category: chore
 breaking: false
 issues:
-  - A-1364
+  - R-1364
 stats:
   files_changed: 3
   loc_added: 26
@@ -22,4 +22,4 @@ version: 1.0.2
 
 ## Changed
 
-**Float shared-workflows SHA pins to @v1 ([A-1364](https://linear.app/rheged-studio/issue/A-1364))** — replace pinned commit SHAs with the `@v1` tag for `reusable-changelog-enrich` and `reusable-validate-payload` in `pkg-release.yml` and `validate-payload.yml`.
+**Float shared-workflows SHA pins to @v1 ([R-1364](https://linear.app/rheged-studio/issue/R-1364))** — replace pinned commit SHAs with the `@v1` tag for `reusable-changelog-enrich` and `reusable-validate-payload` in `pkg-release.yml` and `validate-payload.yml`.

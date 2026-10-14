@@ -11,7 +11,7 @@ co_authors: []
 category: chore
 breaking: false
 issues:
-  - A-1345
+  - R-1345
 stats:
   files_changed: 7
   loc_added: 77
@@ -22,7 +22,7 @@ version: 1.0.2
 
 ## Changed
 
-**Bump other `@acme-skunkworks` packages and fix markdownlint 3.x fallout ([A-1345](https://linear.app/rheged-studio/issue/A-1345))**
+**Bump other `@acme-skunkworks` packages and fix markdownlint 3.x fallout ([R-1345](https://linear.app/rheged-studio/issue/R-1345))**
 
 - Raise `@acme-skunkworks/markdownlint-config` to `^3.0.0`, `eslint-config` to
   `^1.1.3`, `changelog-core` to `^1.1.1`, and `commitlint-config` to `^1.0.1`. Leave
